@@ -5,6 +5,14 @@ if(process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
+const nconf = require('nconf')
+
+nconf.argv().env().file('keys.json')
+
+const user = nconf.get('mongoUser');
+const pass = nconf.get('mongoPass');
+const host = nconf.get('mongoHost');
+const port = nconf.get('mongoPort');
 
 const indexRouter = require('./routes/index')
 
@@ -15,10 +23,23 @@ app.use(expressLayouts)
 app.use(express.static('public'))
 
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, {
+
+let uri = process.env.DATABASE_URL;
+
+if(process.env.NODE_ENV === 'production') {
+    uri = `mongodb://${user}:${pass}@${host}`;
+    if (nconf.get('mongoDatabase')) {
+        uri = `${uri}/${nconf.get('mongoDatabase')}retryWrites=true&w=majority`;
+    }
+}
+
+console.log(uri);
+
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
+
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log("Connected to Mongoose"))
