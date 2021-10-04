@@ -1,0 +1,10 @@
+<h2>Search Coffee Shops</h2>
+<form action="/coffeeshops" method="GET">
+    <label>Name</label>
+    <input type="text" name="name" value="<%= searchOptions.name %>">
+    <button type="submit">Search</button>
+</form>
+<br>
+<% coffeeshops.forEach(coffeeshop => { %>
+    <div><%= coffeeshop.Name %></div>
+<% }) %>
