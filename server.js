@@ -30,9 +30,9 @@ const mongoose = require('mongoose')
 let uri = process.env.DATABASE_URL;
 
 if(process.env.NODE_ENV === 'production') {
-    uri = `mongodb://${user}:${pass}@${host}`;
+    uri = `mongodb+srv://${user}:${pass}@${host}`;
     if (nconf.get('mongoDatabase')) {
-        uri = `${uri}/${nconf.get('mongoDatabase')}retryWrites=true&w=majority`;
+        uri = `${uri}/${nconf.get('mongoDatabase')}?retryWrites=true&w=majority`;
     }
 }
 
