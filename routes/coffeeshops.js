@@ -2,6 +2,7 @@ const express = require('express')
 const { search } = require('.')
 const router = express.Router()
 const Coffeeshop = require('../models/coffeeshop')
+const formatDate = require('../lib/formatDate')
 
 // All Coffee Shops Route
 router.get('/', async (req, res) => {
@@ -33,7 +34,7 @@ router.post('/', async (req, res) => {
         Name: req.body.name,
         City: req.body.city,
         Address: req.body.address,
-        Date: req.body.date,
+        Date: formatDate(req.body.date),
         Coffee_Score: req.body.coffee_score,
         Aesthetic_Score: req.body.aesthetic_score,
         Overall_Score: req.body.overall_score,
