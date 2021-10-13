@@ -6,13 +6,16 @@ const formatDate = require('../lib/formatDate')
 
 // All Coffee Shops Route
 router.get('/', async (req, res) => {
+    console.log("Attempting coffeeshops/get")
     let searchOptions = {}
     if(req.query.name != null && req.query.name != '') {
         searchOptions.Name = new RegExp(req.query.name, 'i')
     }
-    console.log(searchOptions)
+    console.log("Search Options: " + searchOptions)
     try {
+        console.log("Attempting search: " + searchOptions)
         const coffeeshops = await Coffeeshop.find(searchOptions)
+        console.log("Done searching")
         res.render('coffeeshops/index', {
             coffeeshops: coffeeshops,
             searchOptions: req.query
