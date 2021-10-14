@@ -2,33 +2,36 @@ const express = require('express')
 const { search } = require('.')
 const router = express.Router()
 const Coffeeshop = require('../models/coffeeshop')
+const City = require('../models/city')
 const formatDate = require('../lib/formatDate')
 
 // All Coffee Shops Route
 router.get('/', async (req, res) => {
-    console.log("Attempting coffeeshops/get")
-    let searchOptions = {}
-    if(req.query.name != null && req.query.name != '') {
-        searchOptions.Name = new RegExp(req.query.name, 'i')
+    let query = Coffeeshop.find()
+    if(req.query.name != null && req.query.title != '') {
+        query = query.regex('Name', new RegExp(req.query.name, 'i'))
     }
-    console.log("Search Options: " + searchOptions)
+    if(req.query.visitedBefore != null && req.query.visitedBefore != '') {
+        query = query.lte('Date', req.query.visitedBefore)
+    }
+    if(req.query.visitedAfter != null && req.query.visitedAfter != '') {
+        query = query.gte('Date', req.query.visitedAfter)
+    }
     try {
-        console.log("Attempting search: " + searchOptions)
-        const coffeeshops = await Coffeeshop.find(searchOptions)
-        console.log("Done searching")
+        const coffeeshops = await query.exec()
         res.render('coffeeshops/index', {
             coffeeshops: coffeeshops,
             searchOptions: req.query
         })
-    } catch {
+    }
+    catch {
         res.redirect('/')
     }
-    
 })
 
 // New Coffee Shop RouteRoute
-router.get('/new', (req, res) => {
-    res.render('coffeeshops/new', {coffeeshop: new Coffeeshop()})
+router.get('/new', async (req, res) => {
+    renderNewPage(res, new Coffeeshop())
 })
 
 // Create Coffee Shop Route
@@ -49,11 +52,27 @@ router.post('/', async (req, res) => {
         //res.redirect(`coffeeshops/${newCoffeeshop.id}`)
         res.redirect('coffeeshops')
     } catch {
-        res.render('coffeeshops/new', {
-            coffeeshop: coffeeshop,
-            errorMessage: "Error creating Coffee Shop"
-        })
+        renderNewPage(res, coffeeshop, true)
     }
 })
+
+async function renderNewPage(res, coffeeshop, hasError = false) {
+    try {
+        const cities = await City.find({})
+        const params = {
+            cities: cities,
+            coffeeshop: coffeeshop
+        }
+        if(hasError)
+            params.errorMessage = 'Error Creating City'
+        //const coffeeshop = new Coffeeshop()
+        res.render('coffeeshops/new', params)
+    } catch (e) {
+        console.log("Error", e.stack);
+        console.log("Error", e.name);
+        console.log("Error", e.message);
+        res.redirect('/coffeeshops')
+    }
+}
 
 module.exports = router

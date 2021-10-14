@@ -17,6 +17,7 @@ const port = nconf.get('mongoPort');
 
 const indexRouter = require('./routes/index')
 const coffeeshopRouter = require('./routes/coffeeshops')
+const citiesRouter = require('./routes/cities')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -49,5 +50,6 @@ db.once('open', () => console.log("Connected to Mongoose"))
 
 app.use('/', indexRouter)
 app.use('/coffeeshops', coffeeshopRouter)
+app.use('/cities', citiesRouter)
 
 app.listen(process.env.PORT || 3000)

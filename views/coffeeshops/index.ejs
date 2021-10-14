@@ -1,7 +1,17 @@
 <h2>Search Coffee Shops</h2>
 <form action="/coffeeshops" method="GET">
-    <label>Name</label>
-    <input type="text" name="name" value="<%= searchOptions.name %>">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" value="<%= searchOptions.name %>">
+    </div>
+    <div>
+        <label>Visited After</label>
+        <input type="date" name="visitedAfter" value="<%= searchOptions.visitedAfter %>">
+    </div>
+    <div>
+        <label>Visited Before</label>
+        <input type="date" name="visitedBefore" value="<%= searchOptions.visitedBefore %>">
+    </div>
     <button type="submit">Search</button>
 </form>
 <br>
