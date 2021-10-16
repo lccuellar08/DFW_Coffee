@@ -1,0 +1,11 @@
+<h2><%= city.Name %></h2>
+<a href="/cities/<%= city.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', {url: `/cities/${city.id}`}) %>
+<% if (coffeeshopsInCity.length > 0) { %>
+    <h2>Coffeeshops in City:</h2>
+    <div>
+        <% coffeeshopsInCity.forEach(coffeeshop => { %>
+            <div><%= coffeeshop.Name %></div>
+        <% }) %>
+    </div>
+<% } %>

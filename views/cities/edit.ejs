@@ -1,0 +1,6 @@
+<h2>Edit City</h2>
+<form action="/cities/<%= city.id %>?_method=PUT" method="POST">
+    <%- include('_form_fields') %>
+    <a href="/cities/<%= city.id %>">Cancel</a>
+    <button type="submit">Update</button>
+</form>
