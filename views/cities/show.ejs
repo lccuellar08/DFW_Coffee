@@ -5,7 +5,9 @@
     <h2>Coffeeshops in City:</h2>
     <div>
         <% coffeeshopsInCity.forEach(coffeeshop => { %>
-            <div><%= coffeeshop.Name %></div>
+            <a href="/coffeeshops/<%= coffeeshop.id%>">
+                <div><%= coffeeshop.Name %></div>
+            </a>
         <% }) %>
     </div>
 <% } %>

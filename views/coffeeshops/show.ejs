@@ -1,0 +1,12 @@
+<h2><%= coffeeshop.Name %></h2>
+<div>City: <%= coffeeshop.City.Name %></div>
+<div>Address: <%= coffeeshop.Address %></div>
+<div>Visited Date: <%= coffeeshop.Date.toDateString() %></div>
+<div>Coffee Score: <%= coffeeshop.Coffee_Score%></div>
+<div>Aesthetic Score: <%= coffeeshop.Aesthetic_Score%></div>
+<div>Overall Score: <%= coffeeshop.Overall_Score%></div>
+<div>Notes: <%= coffeeshop.Notes%></div>
+
+<a href="/coffeeshops/<%=coffeeshop.id%>/edit">Edit</a>
+<%- include('../partials/deleteForm', {url: `/coffeeshops/${coffeeshop.id}`}) %>
+<a href="/cities/<%=coffeeshop.City.id%>">View City</a>

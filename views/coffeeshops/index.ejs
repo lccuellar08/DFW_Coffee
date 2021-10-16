@@ -16,6 +16,8 @@
 </form>
 <div>
     <% coffeeshops.forEach(coffeeshop => { %>
-        <div><%= coffeeshop.Name %></div>
+        <a href = "/coffeeshops/<%= coffeeshop.id%>">
+            <div><%= coffeeshop.Name %></div>
+        </a>
     <% }) %>
 </div>

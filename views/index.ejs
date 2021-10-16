@@ -1,6 +1,8 @@
 <h2>Recently Visited</h2>
 <div>
     <% coffeeshops.forEach(coffeeshop => { %>
-        <div><%= coffeeshop.Name %></div>
+        <a href="/coffeeshops/<%= coffeeshop.id %>">
+            <div><%= coffeeshop.Name %></div>
+        </a>
     <% }) %>
 </div>
