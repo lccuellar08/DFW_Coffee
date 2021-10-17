@@ -1,8 +1,10 @@
 <h2 class="page-header"><%= city.Name %></h2>
-<a href="/cities/<%= city.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', {url: `/cities/${city.id}`}) %>
+<div class="btn-row">
+    <a class="btn btn-primary" href="/cities/<%= city.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm', {url: `/cities/${city.id}`}) %>
+</div>
 <% if (coffeeshopsInCity.length > 0) { %>
-    <h2>Coffeeshops in City:</h2>
+    <h2 class="page-header">Coffeeshops in City:</h2>
     <div>
         <% coffeeshopsInCity.forEach(coffeeshop => { %>
             <a href="/coffeeshops/<%= coffeeshop.id%>">
@@ -11,3 +13,4 @@
         <% }) %>
     </div>
 <% } %>
+

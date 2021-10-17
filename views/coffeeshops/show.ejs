@@ -6,7 +6,9 @@
 <div>Aesthetic Score: <%= coffeeshop.Aesthetic_Score%></div>
 <div>Overall Score: <%= coffeeshop.Overall_Score%></div>
 <div>Notes: <%= coffeeshop.Notes%></div>
-
-<a href="/coffeeshops/<%=coffeeshop.id%>/edit">Edit</a>
-<%- include('../partials/deleteForm', {url: `/coffeeshops/${coffeeshop.id}`}) %>
-<a href="/cities/<%=coffeeshop.City.id%>">View City</a>
+<br>
+<div class="btn-row">
+    <a class="btn btn-primary" href="/coffeeshops/<%=coffeeshop.id%>/edit">Edit</a>
+    <%- include('../partials/deleteForm', {url: `/coffeeshops/${coffeeshop.id}`}) %>
+    <a class="btn btn-primary" href="/cities/<%=coffeeshop.City.id%>">View City</a>
+</div>

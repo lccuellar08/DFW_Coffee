@@ -1,31 +1,48 @@
-<label>Name</label>
-<input type="text" name="name" value = "<%= coffeeshop.Name %>">
-<br>
-<label>City</label>
-<select name="city">
-<% cities.forEach(city => { %>
-    <% if(city.id === coffeeshop.city) { %>
-        <option selected label="<%= city.Name %>" value="<%= city.id %>">
-    <% } else { %>
-        <option selected label="<%= city.Name %>" value="<%= city.id %>">
-    <% } %>
-<% }) %>
-</select>
-<br>
-<label>Address</label>
-<input type="text" name="address" value = "<%= coffeeshop.Address %>">
-<br>
-<label>Date</label>
-<input type="date" name="date" value = "<%= coffeeshop.Date %>">
-<br>
-<label>Coffee Score</label>
-<input type="number" name="coffee_score" value = "<%= coffeeshop.Coffee_Score %>">
-<br>
-<label>Aesthetic Score</label>
-<input type="number" name="aesthetic_score" value = "<%= coffeeshop.Aesthetic_Score %>">
-<br>
-<label>Overall Score</label>
-<input type="number" name="overall_score" value = "<%= coffeeshop.Overall_Score %>">
-<br>
-<label>Notes</label>
-<input type="text" name="notes" value = "<%= coffeeshop.Notes %>">
+<div class="form-row">
+    <div class="form-item">
+        <label>Name</label>
+        <input type="text" name="name" value = "<%= coffeeshop.Name %>">
+    </div>
+    <div class="form-item">
+        <label>City</label>
+    <select name="city">
+    <% cities.forEach(city => { %>
+        <% if(city.id === coffeeshop.city) { %>
+            <option selected label="<%= city.Name %>" value="<%= city.id %>">
+        <% } else { %>
+            <option selected label="<%= city.Name %>" value="<%= city.id %>">
+        <% } %>
+    <% }) %>
+    </select>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-item">
+        <label>Address</label>
+        <input type="text" name="address" value = "<%= coffeeshop.Address %>">
+    </div>
+    <div class="form-item">
+        <label>Date</label>
+        <input type="date" name="date" value = "<%= coffeeshop.Date %>">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-item">
+        <label>Coffee Score</label>
+        <input type="number" name="coffee_score" value = "<%= coffeeshop.Coffee_Score %>">
+    </div>
+    <div class="form-item">
+        <label>Aesthetic Score</label>
+        <input type="number" name="aesthetic_score" value = "<%= coffeeshop.Aesthetic_Score %>">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-item form-item-no-grow">
+        <label>Overall Score</label>
+        <input type="number" name="overall_score" value = "<%= coffeeshop.Overall_Score %>">
+    </div>
+    <div class="form-item form-item-no-grow">
+        <label>Notes</label>
+        <textarea name="notes" value = "<%= coffeeshop.Notes %>"></textarea>
+    </div>
+</div>
