@@ -1,4 +1,4 @@
-<h2>Search Cities</h2>
+<h2 class="page-header">Search Cities</h2>
 <form action="/cities" method="GET">
     <div>
         <label>Name</label>
@@ -9,9 +9,11 @@
 <br>
 <% cities.forEach(city => { %>
     <div><%= city.Name %></div>
-    <a href = "/cities/<%= city.id %>">View</a>
-    <a href = "/cities/<%= city.id %>/edit">Edit</a>
-    <%- include('../partials/deleteForm',
-        {url: `/cities/${city.id}`})
-    %>
+    <div class="btn-row">
+        <a class="btn btn-primary" href = "/cities/<%= city.id %>">View</a>
+        <a class="btn btn-primary" href = "/cities/<%= city.id %>/edit">Edit</a>
+        <%- include('../partials/deleteForm',
+            {url: `/cities/${city.id}`})
+        %>
+    </div>
 <% }) %>
