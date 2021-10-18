@@ -1,8 +1,4 @@
 <h2 class="page-header">Recently Visited</h2>
 <div>
-    <% coffeeshops.forEach(coffeeshop => { %>
-        <a href="/coffeeshops/<%= coffeeshop.id %>">
-            <div><%= coffeeshop.Name %></div>
-        </a>
-    <% }) %>
+    <%- include('partials/coffeeshopTable', {coffeeshops: coffeeshops}) %>
 </div>

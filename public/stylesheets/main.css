@@ -3,6 +3,8 @@
 @import 'shared/header.css';
 @import 'shared/buttons.css';
 @import 'shared/form.css';
+@import 'shared/city.css';
+@import 'shared/coffeeshop.css';
 
 :root {
     font-family: 'Avenir Next LT Pro';
@@ -21,7 +23,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: auto;
     margin-bottom: 3rem;
 }

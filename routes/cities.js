@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const city = await City.findById(req.params.id)
-        const coffeeshops = await Coffeeshop.find({City: city.id}).limit(6).exec()
+        const coffeeshops = await Coffeeshop.find({City: city.id}).limit(6).populate('City').exec()
         res.render('cities/show', {
             city: city,
             coffeeshopsInCity: coffeeshops

@@ -1,0 +1,26 @@
+<table class="coffeeshop-table">
+    <tr>
+        <th class="coffeeshop-table-header">Name</th>
+        <th class="coffeeshop-table-header">City</th>
+        <th class="coffeeshop-table-header">Coffee Score</th>
+        <th class="coffeeshop-table-header">Aesthetic Score</th>
+        <th class="coffeeshop-table-header">Overall Score</th>
+        <th class="coffeeshop-table-header">Links</th>
+    </tr>
+    <% coffeeshops.forEach(coffeeshop => { %>
+        <tr class="coffeeshop-table-row">
+            <td class="coffeeshop-table-cell"><%= coffeeshop.Name %></td>
+            <td class="coffeeshop-table-cell"><%= coffeeshop.City.Name %></td>
+            <td class="coffeeshop-table-cell"><%= coffeeshop.Coffee_Score %></td>
+            <td class="coffeeshop-table-cell"><%= coffeeshop.Aesthetic_Score %></td>
+            <td class="coffeeshop-table-cell"><%= coffeeshop.Overall_Score %></td>
+            <td class="form-row form-row-end btn-row coffeeshop-table-cell">
+                <a class="btn btn-primary" href = "/coffeeshops/<%= coffeeshop.id%>">View</a>
+                <a class="btn btn-primary" href = "/coffeeshops/<%= coffeeshop.id%>/edit">Edit</a>
+                <%- include('../partials/deleteForm',
+                    {url: `/coffeeshops/${coffeeshop.id}`})
+                %>
+            </td>
+        </tr>
+    <% }) %>
+</table>

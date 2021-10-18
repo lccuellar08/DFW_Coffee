@@ -12,12 +12,15 @@
 </form>
 <br>
 <% cities.forEach(city => { %>
-    <div><%= city.Name %></div>
-    <div class="btn-row">
-        <a class="btn btn-primary" href = "/cities/<%= city.id %>">View</a>
-        <a class="btn btn-primary" href = "/cities/<%= city.id %>/edit">Edit</a>
-        <%- include('../partials/deleteForm',
-            {url: `/cities/${city.id}`})
-        %>
+    <div class="city-row">
+        <div class="city-name"><%= city.Name %></div>
+        <div class="form-row form-row-end btn-row">
+            <a class="btn btn-primary" href = "/cities/<%= city.id %>">View</a>
+            <a class="btn btn-primary" href = "/cities/<%= city.id %>/edit">Edit</a>
+            <%- include('../partials/deleteForm',
+                {url: `/cities/${city.id}`})
+            %>
+        </div>
     </div>
 <% }) %>
+

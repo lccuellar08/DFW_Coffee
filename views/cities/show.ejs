@@ -5,12 +5,6 @@
 </div>
 <% if (coffeeshopsInCity.length > 0) { %>
     <h2 class="page-header">Coffeeshops in City:</h2>
-    <div>
-        <% coffeeshopsInCity.forEach(coffeeshop => { %>
-            <a href="/coffeeshops/<%= coffeeshop.id%>">
-                <div><%= coffeeshop.Name %></div>
-            </a>
-        <% }) %>
-    </div>
+    <%- include('../partials/coffeeshopTable', {coffeeshops: coffeeshopsInCity}) %>
 <% } %>
 

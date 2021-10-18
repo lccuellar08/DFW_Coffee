@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
         query = query.gte('Date', req.query.visitedAfter)
     }
     try {
-        const coffeeshops = await query.exec()
+        const coffeeshops = await query.populate('City').exec()
         res.render('coffeeshops/index', {
             coffeeshops: coffeeshops,
             searchOptions: req.query

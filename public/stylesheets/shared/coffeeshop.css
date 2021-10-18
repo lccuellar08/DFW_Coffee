@@ -1,0 +1,66 @@
+:root {
+    --coffeeshop-header-color: hsl(var(--color-base-hue), 100%, 35%);
+    --coffeeshop-row-color-odd: hsl(var(--color-base-hue), 100%, 65%, 75%);
+    --coffeeshop-row-color-even: hsl(var(--color-base-hue), 100%, 75%, 75%);
+    --coffeeshop-text-hover-color: calc(var(--color-base-hue) - 180);
+    --coffeeshop-table-font-color: black
+}
+
+.coffeeshop-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.coffeeshop-item {
+    font-size: 2rem;
+}
+
+.coffeeshop-item:first {
+    font-weight: bold;
+}
+
+.coffeeshop-table {
+    width: 100%;
+    border-collapse: collapse;   
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.coffeeshop-table-header {
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: left;
+    background-color: var(--coffeeshop-header-color);
+    padding: 0.5rem 0.5rem;
+}
+
+.coffeeshop-table-header:last-child {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: right;
+}
+
+.coffeeshop-table-row {
+    background-color: var(--coffeeshop-row-color-odd);
+}
+
+.coffeeshop-table-row:nth-child(even) {
+    background-color: var(--coffeeshop-row-color-even);
+}
+
+.coffeeshop-table-row:hover {
+    font-weight: bold;
+}
+
+.coffeeshop-table-row:hover td {
+    color: var(--coffeeshop-text-hover-color);
+}
+
+.coffeeshop-table-row td:last-child {
+    font-weight: normal;
+}
+
+.coffeeshop-table-cell {
+    color: var(--color-text-dark);
+    padding: 0rem 0.5rem
+}

@@ -20,10 +20,7 @@
         <button class="btn btn-primary" type="submit">Search</button>
     </div>
 </form>
+<br>
 <div>
-    <% coffeeshops.forEach(coffeeshop => { %>
-        <a href = "/coffeeshops/<%= coffeeshop.id%>">
-            <div><%= coffeeshop.Name %></div>
-        </a>
-    <% }) %>
+    <%- include('../partials/coffeeshopTable', {coffeeshops: coffeeshops}) %>
 </div>

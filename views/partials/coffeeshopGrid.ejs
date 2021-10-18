@@ -1,0 +1,16 @@
+<div class="coffeeshop-grid">
+    <% coffeeshops.forEach(coffeeshop => { %>
+        <div class="coffeeshop-row">
+            <div class="coffeeshop-name"><%= coffeeshop.Name %></div>
+            <div class="coffeeshop-city"><%= coffeeshop.City.Name %></div>
+            <div class="coffeeshop-score"><%= coffeeshop.Overall_Score %></div>
+            <div class="form-row form-row-end btn-row">
+                <a class="btn btn-primary" href = "/coffeeshops/<%= coffeeshop.id%>">View</a>
+                <a class="btn btn-primary" href = "/coffeeshops/<%= coffeeshop.id%>/edit">Edit</a>
+                <%- include('../partials/deleteForm',
+                    {url: `/coffeeshops/${coffeeshop.id}`})
+                %>
+            </div>
+        </div>
+    <% }) %>
+</div>
