@@ -1,4 +1,4 @@
-const { Int32, Double } = require('mongodb')
+const { Int32, Double, Long } = require('mongodb')
 const mongoose = require('mongoose')
 
 const coffeeshopSchema = new mongoose.Schema({
@@ -21,14 +21,17 @@ const coffeeshopSchema = new mongoose.Schema({
     },
     Coffee_Score: {
         type: Number,
+        btype: Double,
         required: true
     },
     Aesthetic_Score: {
         type: Number,
+        btype: Double,
         required: true
     },
     Overall_Score: {
         type: Number,
+        btype: Double,
         required: true
     },
     Notes: {

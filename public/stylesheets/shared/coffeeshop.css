@@ -42,6 +42,7 @@
 
 .coffeeshop-table-row {
     background-color: var(--coffeeshop-row-color-odd);
+    padding: 0.5rem 0.5rem;
 }
 
 .coffeeshop-table-row:nth-child(even) {
@@ -58,6 +59,8 @@
 
 .coffeeshop-table-row td:last-child {
     font-weight: normal;
+    align-items: center;
+    padding-top: 0.5rem;
 }
 
 .coffeeshop-table-cell {
